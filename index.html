@@ -157,15 +157,15 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
-        <a href="/2021/09/03/hello-world/" >
-  Hello World
+        <a href="/2021/09/03/minecraft/" >
+  
 </a>
 
       </h3>
       
 
       <div class="article-info">
-        <a href="/2021/09/03/hello-world/"><span class="article-date">
+        <a href="/2021/09/03/minecraft/"><span class="article-date">
   2021-09-03
 </span>
 </a>
@@ -176,19 +176,32 @@
       </div>
       <div class="article-entry">
         
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <h1 id="在-Linux-上安装-Minecraft"><a href="#在-Linux-上安装-Minecraft" class="headerlink" title="在 Linux 上安装 Minecraft"></a>在 Linux 上安装 Minecraft</h1><h2 id="1-配置-jre-与-jdk"><a href="#1-配置-jre-与-jdk" class="headerlink" title="1. 配置 jre 与 jdk"></a>1. 配置 jre 与 jdk</h2><h3 id="1-1-下载"><a href="#1-1-下载" class="headerlink" title="1.1 下载"></a>1.1 下载</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.java.com/zh_CN/download/linux_manual.jsp">下载 jre</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">下载 jdk</a></li>
+</ul>
+<h3 id="1-2-安装"><a href="#1-2-安装" class="headerlink" title="1.2 安装"></a>1.2 安装</h3><p>jdk 有 deb 包, 所以直接安装.<br>安装 jre: 在下载 jre 的目录下新建 install_java.sh, 输入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line">sudo mkdir -p /usr/local/java</span><br><span class="line">sudo rm -r /usr/local/java/*</span><br><span class="line">sudo tar zxvf ./jdk*.tar.gz -C /usr/local/java</span><br><span class="line">sudo tar zxvf ./jre*.tar.gz -C /usr/local/java</span><br><span class="line">sudo mv /usr/local/java/jdk* /usr/local/java/jdk</span><br><span class="line">sudo mv /usr/local/java/jre* /usr/local/java/jre</span><br><span class="line">sudo echo -e &quot;n#javanJAVA_HOME=/usr/local/java/jdknJRE_HOME=/usr/local/java/jrenPATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$JRE_HOME/binnexport JAVA_HOMEnexport JRE_HOMEnexport PATH&quot; &gt;&gt; /etc/profile</span><br><span class="line">sudo update-alternatives --install &quot;/usr/bin/java&quot; &quot;java&quot; &quot;/usr/local/java/jre/bin/java&quot; 1</span><br><span class="line">sudo update-alternatives --install &quot;/usr/bin/javac&quot; &quot;javac&quot; &quot;/usr/local/java/jdk/bin/javac&quot; 1</span><br><span class="line">sudo update-alternatives --install &quot;/usr/bin/javaws&quot; &quot;javaws&quot; &quot;/usr/local/java/jre/bin/javaws&quot; 1</span><br><span class="line">sudo update-alternatives --set java /usr/local/java/jre/bin/java</span><br><span class="line">sudo update-alternatives --set javac /usr/local/java/jdk/bin/javac</span><br><span class="line">sudo update-alternatives --set javaws /usr/local/java/jre/bin/javaws</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>保存代码后即可运行安装 jre.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x install_java.sh</span><br><span class="line">sudo ./install_java.sh</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>上面的脚本应该来源自<a target="_blank" rel="noopener" href="https://minecraft-zh.gamepedia.com/index.php?title=%E6%95%99%E7%A8%8B/%E6%9B%B4%E6%96%B0Java&variant=zh-cn">此页</a>. 直接使用该脚本可能使系统报错. 它试图向 /etc/profile 中追加 <code>n#javanJAVA_HOME=/usr/local/java/jdknJRE_HOME=/usr/local/java/jrenPATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$JRE_HOME/binnexport JAVA_HOMEnexport JRE_HOMEnexport PATH&quot;</code>, 这会导致错误.</p>
+<p>为了防止报错, 你可以在 /etc/profile 中手动删除上述内容, 然后输入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk-14/</span><br><span class="line">export JRE_HOME=/usr/local/java/jre/</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$PATH:$&#123;JAVA_HOME&#125;/lib:</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>其中具体路径可能由于版本不同有所差别, 请手动修改路径, 可配合 <code>whereis</code> 命令使用.<br>完成后在终端内输入 <code>java -version</code>, 若正确显示出版本号则已成功配置 java 环境.</p>
+<p><em><strong>(可选)</strong></em> 如果安装了多个版本的 java, 可以输入<code>sudo update-alternatives --config java</code>来选择默认的 java 环境.</p>
+<h2 id="2-安装-Minecraft"><a href="#2-安装-Minecraft" class="headerlink" title="2. 安装 Minecraft"></a>2. 安装 Minecraft</h2><h3 id="2-1-下载启动器"><a href="#2-1-下载启动器" class="headerlink" title="2.1 下载启动器"></a>2.1 下载启动器</h3><p>Linux 下可用的启动器不多, 也不建议用 wine 跑 Windows 下的启动器. 正版用户可以在官网下载 Linux 下的启动器. 其他用户可以下载 <a target="_blank" rel="noopener" href="https://hmcl.huangyuhui.net/">HCML 启动器</a>.<br>现在已经可以直接进行游戏, 在启动器目录打开终端, 输入 <code>java -jar ***.jar &amp;</code> 即可, 其中 <em>***.jar</em> 是你的启动器的文件名.</p>
+<p><strong>(可选)</strong> 你也可以:<br>在 /opt 目录新建名为 Minecraft 的文件夹, 将你的启动器文件移动至此. 在该目录下新建 shell 脚本 <em>launch.sh</em>, 然后输入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">java -jar /opt/minecraft/HMCL-3.2.149.jar &amp;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>注意, 同样需要修改你自己的启动器的文件名.</p>
+<p>这样以后, 在 /usr/share/applications 目录下新建文件 <em>minecraft.desktop</em>, 输入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">Name=Minecraft</span><br><span class="line">Comment=(Unofficial) Minecraft Client</span><br><span class="line">Exec=/opt/minecraft/launch.sh</span><br><span class="line">Icon=/opt/minecraft/icon.png</span><br><span class="line">Terminal=false</span><br><span class="line">StartupNotify=true</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;Games;</span><br></pre></td></tr></table></figure>
+
+<p>显然, 此处第 6 行需要启动器的图标. 用 归档管理器 或者其他解压缩软件打开 .jar 文件, 提取 /assets/img 下的 <em>icon.png</em> 并移动到 /opt/minecraft 目录下.</p>
+<p>至此, Minecraft 安装完成.</p>
 
         
       </div>
