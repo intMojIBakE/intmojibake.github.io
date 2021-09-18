@@ -88,7 +88,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">Archive</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">6</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">7</span></li></ul>
               </li>
             
           
@@ -129,6 +129,48 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2021/09/18/poj3006/" >
+  
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2021/09/18/poj3006/"><span class="article-date">
+  2021-09-18
+</span>
+</a>
+        
+
+        
+
+      </div>
+      <div class="article-entry">
+        
+          <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000001</span>;</span><br><span class="line"><span class="keyword">bool</span> primeQ[N];</span><br><span class="line"><span class="keyword">int</span> prime[N / <span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> a, d, n, cur;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">pos</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 查询x在素数表中的位置，不存在时返回-1</span></span><br><span class="line">    <span class="keyword">int</span> t = <span class="built_in">lower_bound</span>(prime + <span class="number">1</span>, prime + <span class="number">1</span> + cnt, x) - prime;</span><br><span class="line">    <span class="keyword">return</span> prime[t] == x?t:<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)primeQ[i] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; N; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(primeQ[i])prime[++cnt] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; prime[j] * i &lt;= N; ++j)&#123;</span><br><span class="line">            primeQ[i * prime[j]] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;d, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(!(a == <span class="number">0</span> &amp;&amp; d == <span class="number">0</span> &amp;&amp; n == <span class="number">0</span>))&#123;</span><br><span class="line">        cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = a; cur &lt;= n; i += d)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">pos</span>(i) != <span class="number">-1</span>)++cur;</span><br><span class="line">            <span class="keyword">if</span>(cur == n)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;d, &amp;n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h3><ul>
+<li>  简单考察一下线性筛</li>
+<li>  不用手写二分太好了</li>
+<li>  水题</li>
+</ul>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
