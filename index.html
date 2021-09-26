@@ -88,7 +88,7 @@
             
               <li class="archive-list-container">
                 <a href="javascript:;">Archive</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">7</span></li></ul>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
               </li>
             
           
@@ -129,6 +129,50 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2021/09/26/%E3%80%90%E6%9D%82%E9%A2%98%E3%80%91%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" >
+  
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2021/09/26/%E3%80%90%E6%9D%82%E9%A2%98%E3%80%91%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/"><span class="article-date">
+  2021-09-26
+</span>
+</a>
+        
+
+        
+
+      </div>
+      <div class="article-entry">
+        
+          <h3 id="Prob"><a href="#Prob" class="headerlink" title="Prob"></a>Prob</h3><p>社团的一道水题。</p>
+<h5 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h5><p>共三行，第一行是一个正整数，表示需要转换的数的进制n(2≤n≤16)，第二行是一个n进制数，若n&gt;10则用大写字母A-F表示数码10-15，并且该n进制数对应的十进制的值不超过1000000000，第三行也是一个正整数，表示转换之后的数的进制m(2≤m≤16)。</p>
+<h5 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h5><p>一个正整数，表示转换之后的m进制数。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">32</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> digit[] = &#123;<span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> weight[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span>, <span class="number">10000</span>, <span class="number">100000</span>, <span class="number">1000000</span>, <span class="number">10000000</span>, <span class="number">100000000</span>, <span class="number">1000000000</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, tosn;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">numize</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> &amp;ch)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">&#x27;A&#x27;</span> &lt;= ch &amp;&amp; ch &lt;= <span class="string">&#x27;Z&#x27;</span>)<span class="keyword">return</span> ch - <span class="string">&#x27;A&#x27;</span> + <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> ch - <span class="number">48</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">num</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> d[N];   <span class="comment">// 倒序存储不压位</span></span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;sn)</span></span>&#123;</span><br><span class="line">        <span class="comment">// system of numeration</span></span><br><span class="line">        <span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(d));</span><br><span class="line">        <span class="keyword">char</span> x[N];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, x + <span class="number">1</span>);</span><br><span class="line">        len = <span class="built_in">strlen</span>(x) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)d[i] = <span class="built_in">numize</span>(x[len - i + <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; --i)<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, digit[d[i]]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">conv</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;tosn)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; --i)t = t * n + d[i];</span><br><span class="line">        <span class="keyword">int</span> x[N], cur = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(x, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(x));</span><br><span class="line">        <span class="keyword">while</span>(t)&#123;</span><br><span class="line">            x[++cur] = t % tosn;</span><br><span class="line">            t /= tosn;</span><br><span class="line">        &#125;</span><br><span class="line">        len = cur;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)d[i] = x[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;inp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    inp.<span class="built_in">read</span>(n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;tosn);</span><br><span class="line">    inp.<span class="built_in">conv</span>(tosn);</span><br><span class="line">    inp.<span class="built_in">println</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h3><ul>
+<li>  进制转换。代码有点工程向的意思了（bushi</li>
+<li>  没有做太多优化，反正规模不大</li>
+</ul>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
